@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>tms</artifactId>
+        <groupId>com.catface.tms</groupId>
+        <version>0.0.2-SNAPSHOT</version>
+    </parent>
+    <artifactId>common</artifactId>
+    <modelVersion>4.0.0</modelVersion>
+
+    <dependencies>
+        <!-- 二方包 依赖 begin -->
+        <dependency>
+            <artifactId>common-model</artifactId>
+            <groupId>com.catface.common</groupId>
+        </dependency>
+        <!-- 二方包 依赖 end -->
+        <dependency>
+            <artifactId>mybatis-plus-annotation</artifactId>
+            <groupId>com.baomidou</groupId>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <finalName>${project.artifactId}-common-${project.version}</finalName>
+        <plugins>
+            <!-- 不忽略deploy -->
+            <plugin>
+                <artifactId>maven-deploy-plugin</artifactId>
+                <configuration>
+                    <skip>false</skip>
+                </configuration>
+                <groupId>org.apache.maven.plugins</groupId>
+            </plugin>
+            <plugin>
+                <artifactId>maven-source-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                        <id>attach-sources</id>
+                    </execution>
+                </executions>
+                <groupId>org.apache.maven.plugins</groupId>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>

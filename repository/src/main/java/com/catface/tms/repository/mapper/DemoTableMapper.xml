@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.catface.tms.repository.mapper.DemoTableMapper">
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id
+        , name, age, created, updated
+    </sql>
+    <select id="selectByName" resultType="com.catface.tms.repository.entity.DemoTable">
+        select
+        <include refid="Base_Column_List"/>
+        from demo_table where name like concat('%',#{name},'%')
+    </select>
+
+</mapper>

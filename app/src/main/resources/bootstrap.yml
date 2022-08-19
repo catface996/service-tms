@@ -1,0 +1,99 @@
+## 通用配置
+spring:
+  profiles:
+    active: local
+  application:
+    name: tms
+  # 关闭的缓冲时间3分钟
+  lifecycle:
+    timeout-per-shutdown-phase: 180s
+  cloud:
+    nacos:
+      config:
+        prefix: tms
+        group: tms
+
+server:
+  port: 7701
+  shutdown: graceful
+
+http:
+  config:
+    log-enable: true
+logback:
+  home: /var/service/logs
+
+---
+#时间格式反序列化
+spring:
+  jackson:
+    time-zone: GMT+8
+    date-format: yyyy-MM-dd HH:mm:ss
+
+---
+## 本地环境配置
+spring:
+  profiles: local
+  cloud:
+    nacos:
+      config:
+        enabled: false
+logback:
+  home: ./logs
+
+---
+## dev 环境配置
+spring:
+  profiles: dev
+  cloud:
+    nacos:
+      config:
+        server-addr: 配置通过启动参数指定
+        access-key: 配置通过启动参数指定
+        secret-key: 配置通过启动参数指定
+        namespace: 配置通过启动参数指定
+
+---
+## test 环境配置
+spring:
+  profiles: test
+  cloud:
+    nacos:
+      config:
+        server-addr: 配置通过启动参数指定
+        access-key: 配置通过启动参数指定
+        secret-key: 配置通过启动参数指定
+        namespace: 配置通过启动参数指定
+---
+## uat 环境配置
+spring:
+  profiles: uat
+  cloud:
+    nacos:
+      config:
+        server-addr: 配置通过启动参数指定
+        access-key: 配置通过启动参数指定
+        secret-key: 配置通过启动参数指定
+        namespace: 配置通过启动参数指定
+---
+## gray 环境配置
+spring:
+  profiles: gray
+  cloud:
+    nacos:
+      config:
+        server-addr: 配置通过启动参数指定
+        access-key: 配置通过启动参数指定
+        secret-key: 配置通过启动参数指定
+        namespace: 配置通过启动参数指定
+---
+## prod 环境配置
+spring:
+  profiles: prod
+  cloud:
+    nacos:
+      config:
+        server-addr: 配置通过启动参数指定
+        access-key: 配置通过启动参数指定
+        secret-key: 配置通过启动参数指定
+        namespace: 配置通过启动参数指定
