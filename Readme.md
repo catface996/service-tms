@@ -50,3 +50,9 @@ GeneratorServiceEntity.generateAllCode 会生dao层的相关代码
 输入命令：mvn versions:commit 就可以提交版本号了。
 
 切记：提交之后，就无法回退到上个版本号了。
+
+### 代码格式化
+
+[intellij-google-java-style](https://github.com/google/styleguide)
+
+![image-20220821170259683](https://tva1.sinaimg.cn/large/e6c9d24ely1h5ehvwyzx4j21550u0q9i.jpg)
