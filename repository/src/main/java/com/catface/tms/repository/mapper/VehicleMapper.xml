@@ -9,4 +9,23 @@
     , client_id, plate_number, vehicle_type, color, images, vehicle_load, vehicle_length, vehicle_height, creator, modifier, created, updated, remark
   </sql>
 
+  <!-- 分页查询车辆信息 -->
+  <select id="selectOnePage" resultType="com.catface.tms.repository.entity.Vehicle">
+    select
+    <include refid="Base_Column_List"/>
+    from vehicle
+    where client_id = #{param.clientId}
+    <if test="param.plateNumber!=null and param.plateNumber!=''">
+      and plate_number like concat('%', #{param.plateNumber},'%')
+    </if>
+    <if test="param.vehicleTypes!=null">
+      and vehicle_type in
+      <foreach collection="param.vehicleTypes" index="index" item="item" open="(" separator=","
+        close=")">
+        #{item}
+      </foreach>
+    </if>
+
+  </select>
+
 </mapper>

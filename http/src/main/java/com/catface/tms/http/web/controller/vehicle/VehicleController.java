@@ -1,5 +1,6 @@
 package com.catface.tms.http.web.controller.vehicle;
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.catface.common.model.JsonResult;
 import com.catface.common.model.PageVO;
 import com.catface.tms.http.config.swagger.SwaggerTagConst;
@@ -9,6 +10,7 @@ import com.catface.tms.http.web.controller.vehicle.request.GetVehicleRequest;
 import com.catface.tms.http.web.controller.vehicle.request.SaveVehicleRequest;
 import com.catface.tms.http.web.controller.vehicle.response.VehicleResponse;
 import com.catface.tms.repository.entity.Vehicle;
+import com.catface.tms.repository.param.QueryVehicleParam;
 import com.catface.tms.service.vehicle.VehicleService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -46,7 +48,10 @@ public class VehicleController {
   @PostMapping(value = "/public/vehicle/getOnePage")
   public JsonResult<PageVO<VehicleResponse>> getOnePage(
       @RequestBody @Valid GetVehicleRequest request) {
-    return JsonResult.success();
+    QueryVehicleParam param = VehicleWebConvert.convert(request);
+    Page<Vehicle> page = vehicleService.queryOnePage(param);
+    PageVO<VehicleResponse> pageVO = VehicleWebConvert.convert(page);
+    return JsonResult.success(pageVO);
   }
 
   @ApiOperation(value = "删除车辆")
@@ -54,5 +59,6 @@ public class VehicleController {
   public JsonResult<Boolean> delete(@RequestBody @Valid DeleteVehicleRequest request) {
     return JsonResult.success();
   }
+
 
 }

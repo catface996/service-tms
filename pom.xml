@@ -70,6 +70,11 @@
                 <artifactId>common</artifactId>
                 <version>${project.version}</version>
             </dependency>
+            <dependency>
+                <groupId>com.catface.rss</groupId>
+                <artifactId>api</artifactId>
+                <version>0.0.3-SNAPSHOT</version>
+            </dependency>
             <!-- 本地module依赖 end-->
 
             <!-- 二方包依赖 begin-->

@@ -1,6 +1,8 @@
 package com.catface.tms.service.vehicle.impl;
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.catface.tms.repository.entity.Vehicle;
+import com.catface.tms.repository.param.QueryVehicleParam;
 import com.catface.tms.repository.service.VehicleRpService;
 import com.catface.tms.service.vehicle.VehicleService;
 import lombok.extern.slf4j.Slf4j;
@@ -42,7 +44,18 @@ public class VehicleServiceImpl implements VehicleService {
 
     // 执行新增或者更新操作
     vehicleRpService.saveOrUpdate(entity);
-    
+
+  }
+
+  /**
+   * 分页查询车辆列表
+   *
+   * @param param 客户ID,车牌号,车辆类型,分页信息
+   * @return 车辆列表
+   */
+  @Override
+  public Page<Vehicle> queryOnePage(QueryVehicleParam param) {
+    return vehicleRpService.queryOnePage(param);
   }
 
 

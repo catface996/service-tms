@@ -5,12 +5,16 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.cloud.openfeign.EnableFeignClients;
 
 /**
  * @author by catface
  * @since 2020/12/13
  */
 @Slf4j
+@EnableFeignClients(basePackages = {
+		"com.catface.rss.api"
+})
 @SpringBootApplication(
 				scanBasePackages = {"com.catface"}
 )

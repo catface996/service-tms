@@ -10,6 +10,25 @@
   <artifactId>integration</artifactId>
   <modelVersion>4.0.0</modelVersion>
 
+  <dependencies>
+    <dependency>
+      <groupId>com.catface.rss</groupId>
+      <artifactId>api</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-context</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.projectlombok</groupId>
+      <artifactId>lombok</artifactId>
+      <optional>true</optional>
+    </dependency>
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-api</artifactId>
+    </dependency>
+  </dependencies>
   <build>
     <plugins>
       <!-- 忽略deploy -->

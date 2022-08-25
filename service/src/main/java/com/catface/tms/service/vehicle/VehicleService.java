@@ -1,6 +1,8 @@
 package com.catface.tms.service.vehicle;
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.catface.tms.repository.entity.Vehicle;
+import com.catface.tms.repository.param.QueryVehicleParam;
 
 /**
  * @author catface
@@ -14,5 +16,13 @@ public interface VehicleService {
    * @param entity 待保存的车辆
    */
   void save(Vehicle entity);
+
+  /**
+   * 分页查询车辆列表
+   *
+   * @param param 客户ID,车牌号,车辆类型,分页信息
+   * @return 车辆列表
+   */
+  Page<Vehicle> queryOnePage(QueryVehicleParam param);
 
 }
