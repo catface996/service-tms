@@ -6,7 +6,7 @@ import lombok.Data;
 
 /**
  * @author by 大猫
- * @date 2022/4/15 2:42 PM catface996 出品
+ * @since 2022/4/15 2:42 PM catface996 出品
  */
 @Data
 @ApiModel(description = "打招呼的回应结果")

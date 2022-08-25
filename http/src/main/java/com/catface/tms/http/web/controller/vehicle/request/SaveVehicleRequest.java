@@ -25,9 +25,6 @@ public class SaveVehicleRequest {
   @ApiModelProperty(value = "运输工具")
   private Long id;
 
-  @ApiModelProperty(value = "所属客户ID")
-  private Long clientId;
-
   @ApiModelProperty(value = "车牌号")
   private String plateNumber;
 
@@ -41,13 +38,13 @@ public class SaveVehicleRequest {
   private Set<Long> imageIds;
 
   @ApiModelProperty(value = "载重，单位：吨")
-  private Integer load;
+  private Integer vehicleLoad;
 
   @ApiModelProperty(value = "车长")
-  private Integer length;
+  private Integer vehicleLength;
 
   @ApiModelProperty(value = "车高，单位：米")
-  private Integer height;
+  private Integer vehicleHeight;
 
   @ApiModelProperty(value = "备注")
   private String remark;

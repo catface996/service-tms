@@ -14,7 +14,7 @@ spring:
         group: tms
 
 server:
-  port: 7701
+  port: 7007
   shutdown: graceful
 
 http:

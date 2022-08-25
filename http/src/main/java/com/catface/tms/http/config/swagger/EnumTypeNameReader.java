@@ -19,7 +19,7 @@ import springfox.documentation.swagger.schema.ApiModelProperties;
 
 /**
  * @author catface
- * @date 2020/5/16
+ * @since 2020/5/16
  */
 @Component
 @Order

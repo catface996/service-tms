@@ -6,7 +6,7 @@ import org.springframework.context.annotation.Configuration;
 
 /**
  * @author by 大猫
- * @date 2022/4/15 4:04 PM catface996 出品
+ * @since 2022/4/15 4:04 PM catface996 出品
  */
 @Data
 @Configuration

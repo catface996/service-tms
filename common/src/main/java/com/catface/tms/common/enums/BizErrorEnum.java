@@ -4,7 +4,7 @@ import com.catface.common.exception.BaseErrorEnum;
 
 /**
  * @author by catface
- * @date 2020/12/17
+ * @since 2020/12/17
  */
 public enum BizErrorEnum implements BaseErrorEnum {
 

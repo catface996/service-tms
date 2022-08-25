@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 /**
  * @author by catface
- * @date 2020/12/15
+ * @since 2020/12/15
  */
 
 @FeignClient(name = "helloApi", url = "${rpc.tms.service}", fallbackFactory = HelloApiFallback.class)

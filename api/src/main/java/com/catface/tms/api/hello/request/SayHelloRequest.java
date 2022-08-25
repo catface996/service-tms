@@ -10,7 +10,7 @@ import lombok.Data;
 
 /**
  * @author by catface
- * @date 2020/12/15
+ * @since 2020/12/15
  */
 @ApiModel(description = "打招呼请求")
 @Data

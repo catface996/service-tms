@@ -26,10 +26,10 @@ public class Vehicle implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @ApiModelProperty(value = "运输工具")
+    @TableId(value = "id", type = IdType.ASSIGN_ID)
     private Long id;
 
     @ApiModelProperty(value = "所属客户ID")
-    @TableId(value = "client_id", type = IdType.ASSIGN_ID)
     private Long clientId;
 
     @ApiModelProperty(value = "车牌号")
@@ -45,13 +45,19 @@ public class Vehicle implements Serializable {
     private String images;
 
     @ApiModelProperty(value = "载重，单位：吨")
-    private Integer load;
+    private Integer vehicleLoad;
 
     @ApiModelProperty(value = "车长")
-    private Integer length;
+    private Integer vehicleLength;
 
     @ApiModelProperty(value = "车高，单位：米")
-    private Integer height;
+    private Integer vehicleHeight;
+
+    @ApiModelProperty(value = "创建人")
+    private Long creator;
+
+    @ApiModelProperty(value = "修改人")
+    private Long modifier;
 
     @ApiModelProperty(value = "创建时间")
     private Date created;

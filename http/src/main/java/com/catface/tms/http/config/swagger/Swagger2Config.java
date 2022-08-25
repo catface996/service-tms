@@ -16,7 +16,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 /**
  * @author catface
- * @date 2018/3/6
+ * @since 2018/3/6
  */
 @Configuration
 @EnableSwagger2

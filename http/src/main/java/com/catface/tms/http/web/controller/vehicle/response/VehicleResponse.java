@@ -36,13 +36,13 @@ public class VehicleResponse {
   private List<ImageResponse> images;
 
   @ApiModelProperty(value = "载重，单位：吨")
-  private Integer load;
+  private Integer vehicleLoad;
 
   @ApiModelProperty(value = "车长")
-  private Integer length;
+  private Integer vehicleLength;
 
   @ApiModelProperty(value = "车高，单位：米")
-  private Integer height;
+  private Integer vehicleHeight;
 
   @ApiModelProperty(value = "创建时间")
   private Date created;

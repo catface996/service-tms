@@ -21,7 +21,7 @@ import static com.baomidou.mybatisplus.generator.config.rules.DateType.ONLY_DATE
  * </p>
  *
  * @author K神
- * @date 2017/12/18
+ * @since 2017/12/18
  */
 public class GeneratorServiceEntity extends BaseTest {
 
