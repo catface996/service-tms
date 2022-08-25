@@ -12,5 +12,7 @@ public class SwaggerTagConst {
 
     public static final String SAY_HELLO = "打招呼";
 
+    public static final String VEHICLE = "车辆";
+
 
 }

@@ -14,12 +14,12 @@ import lombok.extern.slf4j.Slf4j;
 @SpringBootApplication(
 				scanBasePackages = {"com.catface"}
 )
-public class tmsApplication {
+public class TmsApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(tmsApplication.class, args);
-		log.info("tmsApplication start success!");
-		System.out.println("tmsApplication start success!");
+		SpringApplication.run(TmsApplication.class, args);
+		log.info("TmsApplication start success!");
+		System.out.println("TmsApplication start success!");
 		System.out.println(EnvUtil.getSwaggerUrl());
 		System.out.println(EnvUtil.getDocUrl());
 	}
