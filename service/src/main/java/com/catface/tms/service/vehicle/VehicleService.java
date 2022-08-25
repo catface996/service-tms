@@ -25,4 +25,12 @@ public interface VehicleService {
    */
   Page<Vehicle> queryOnePage(QueryVehicleParam param);
 
+  /**
+   * 删除车辆
+   *
+   * @param vehicleId 待删除车辆ID
+   * @param clientId  执行删除的客户ID
+   */
+  void delete(Long vehicleId, Long clientId);
+
 }

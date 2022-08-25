@@ -57,7 +57,8 @@ public class VehicleController {
   @ApiOperation(value = "删除车辆")
   @PostMapping(value = "/public/vehicle/delete")
   public JsonResult<Boolean> delete(@RequestBody @Valid DeleteVehicleRequest request) {
-    return JsonResult.success();
+    vehicleService.delete(request.getVehicleId(), request.getCtxClientId());
+    return JsonResult.success(true);
   }
 
 

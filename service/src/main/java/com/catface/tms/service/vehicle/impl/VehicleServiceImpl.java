@@ -58,5 +58,25 @@ public class VehicleServiceImpl implements VehicleService {
     return vehicleRpService.queryOnePage(param);
   }
 
+  /**
+   * 删除车辆
+   *
+   * @param vehicleId 待删除车辆ID
+   * @param clientId  执行删除的客户ID
+   */
+  @Override
+  public void delete(Long vehicleId, Long clientId) {
+    Vehicle entity = vehicleRpService.getById(vehicleId);
+    if (entity == null) {
+      log.warn("待删除的车辆不存在,车辆ID:{}", vehicleId);
+      return;
+    }
+    // 检查操作删除的客户是否是待删除车辆的归属人
+    Assert.state(entity.getClientId().equals(clientId), "禁止删除其他客户的车辆");
+
+    // 执行删除动作
+    vehicleRpService.removeById(vehicleId);
+  }
+
 
 }
