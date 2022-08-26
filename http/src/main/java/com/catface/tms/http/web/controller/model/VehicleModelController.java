@@ -53,9 +53,10 @@ public class VehicleModelController {
     return JsonResult.success(pageVO);
   }
 
-  @ApiOperation(value = "分页查询车辆型号")
+  @ApiOperation(value = "删除车辆型号")
   @PostMapping(value = "/public/vehicleModel/delete")
   public JsonResult<Boolean> delete(@RequestBody @Valid IdRequest request) {
+    vehicleModelService.delete(request.getId());
     return JsonResult.success(true);
   }
 

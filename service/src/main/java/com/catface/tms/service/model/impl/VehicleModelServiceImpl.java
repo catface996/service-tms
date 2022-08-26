@@ -50,6 +50,6 @@ public class VehicleModelServiceImpl implements VehicleModelService {
    */
   @Override
   public void delete(Long vehicleModelId) {
-
+    vehicleModelRpService.removeById(vehicleModelId);
   }
 }
