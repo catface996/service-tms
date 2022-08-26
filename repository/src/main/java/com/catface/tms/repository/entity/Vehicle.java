@@ -36,7 +36,7 @@ public class Vehicle implements Serializable {
     private String plateNumber;
 
     @ApiModelProperty(value = "车辆类型，例如：箱式火车")
-    private String vehicleType;
+    private String vehicleModel;
 
     @ApiModelProperty(value = "车身颜色")
     private String color;

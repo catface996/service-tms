@@ -39,12 +39,12 @@ public class GeneratorServiceEntity extends BaseTest {
 
     @Test
     public void generateAllCode() {
-        generateByTables(serviceNameStartWithI, packageName, "vehicle");
+        generateByTables(serviceNameStartWithI, packageName, "vehicle_model");
     }
 
     @Test
     public void generateOnlyEntity() {
-        generateEntity(serviceNameStartWithI, packageName, "vehicle");
+        generateEntity(serviceNameStartWithI, packageName, "vehicle_model");
     }
 
     private void generateEntity(boolean serviceNameStartWithI, String packageName,

@@ -29,7 +29,7 @@ public class SaveVehicleRequest {
   private String plateNumber;
 
   @ApiModelProperty(value = "车辆类型，例如：箱式火车")
-  private Long vehicleType;
+  private Long vehicleModel;
 
   @ApiModelProperty(value = "车身颜色")
   private String color;

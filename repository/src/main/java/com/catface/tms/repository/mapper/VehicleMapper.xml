@@ -6,7 +6,7 @@
   <!-- 通用查询结果列 -->
   <sql id="Base_Column_List">
     id
-    , client_id, plate_number, vehicle_type, color, images, vehicle_load, vehicle_length, vehicle_height, creator, modifier, created, updated, remark
+    , client_id, plate_number, vehicle_model, color, images, vehicle_load, vehicle_length, vehicle_height, creator, modifier, created, updated, remark
   </sql>
 
   <!-- 分页查询车辆信息 -->
