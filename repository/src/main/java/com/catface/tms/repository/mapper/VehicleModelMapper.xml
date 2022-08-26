@@ -1,10 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.catface.tms.repository.mapper.VehicleModelMapper">
 
-    <!-- 通用查询结果列 -->
-    <sql id="Base_Column_List">
-        id, model_name, vehicle_length, vehicle_width, vehicle_height, creator, modifier, created, updated, remark
-    </sql>
+  <!-- 通用查询结果列 -->
+  <sql id="Base_Column_List">
+    id
+    , model_name, vehicle_length, vehicle_width, vehicle_height, creator, modifier, created, updated, remark
+  </sql>
+
+  <!-- 分页查询车辆型号 -->
+  <select id="selectOnePage" resultType="com.catface.tms.repository.entity.VehicleModel">
+    select
+    <include refid="Base_Column_List"/>
+    from vehicle_model
+    where 1=1
+    <if test="param.modelName!=null and param.modelName!=''">
+      and model_name like concat('%',#{param.modelName},'%')
+    </if>
+  </select>
 
 </mapper>

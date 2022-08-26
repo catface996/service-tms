@@ -2,10 +2,11 @@ package com.catface.tms.http.web.controller.model.convert;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.catface.common.model.PageVO;
+import com.catface.tms.http.web.controller.model.request.GetVehicleModelRequest;
 import com.catface.tms.http.web.controller.model.request.SaveVehicleModelRequest;
 import com.catface.tms.http.web.controller.model.response.VehicleModelResponse;
-import com.catface.tms.http.web.controller.vehicle.request.SaveVehicleRequest;
 import com.catface.tms.repository.entity.VehicleModel;
+import com.catface.tms.repository.param.QueryVehicleModelParam;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -19,10 +20,13 @@ import org.springframework.cglib.beans.BeanCopier;
 public class VehicleModelWebConvert {
 
   private static final BeanCopier SAVE_REQUEST_2_ENTITY = BeanCopier.create(
-      SaveVehicleRequest.class, VehicleModel.class, false);
+      SaveVehicleModelRequest.class, VehicleModel.class, false);
 
   private static final BeanCopier ENTITY_2_RESPONSE = BeanCopier.create(VehicleModel.class,
       VehicleModelResponse.class, false);
+
+  private static final BeanCopier GET_REQUEST_2_PARAM = BeanCopier.create(
+      GetVehicleModelRequest.class, QueryVehicleModelParam.class, false);
 
   public static VehicleModel convert(SaveVehicleModelRequest request) {
     VehicleModel entity = new VehicleModel();
@@ -35,6 +39,14 @@ public class VehicleModelWebConvert {
     entity.setUpdated(date);
     entity.setModifier(request.getCtxUserId());
     return entity;
+  }
+
+  public static QueryVehicleModelParam convert(GetVehicleModelRequest request) {
+    QueryVehicleModelParam param = new QueryVehicleModelParam();
+    GET_REQUEST_2_PARAM.copy(request, param, null);
+    param.setCurrent(request.getCurrent());
+    param.setSize(request.getSize());
+    return param;
   }
 
   public static VehicleModelResponse convert(VehicleModel entity) {

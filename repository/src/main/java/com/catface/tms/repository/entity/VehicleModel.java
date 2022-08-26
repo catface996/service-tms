@@ -31,9 +31,6 @@ public class VehicleModel implements Serializable {
   @ApiModelProperty(value = "型号名称")
   private String modelName;
 
-  @ApiModelProperty(value = "型号类别")
-  private String modelType;
-
   @ApiModelProperty(value = "车长，单位：米")
   private Integer vehicleLength;
 
