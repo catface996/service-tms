@@ -18,9 +18,9 @@
     <if test="param.plateNumber!=null and param.plateNumber!=''">
       and plate_number like concat('%', #{param.plateNumber},'%')
     </if>
-    <if test="param.vehicleTypes!=null">
-      and vehicle_type in
-      <foreach collection="param.vehicleTypes" index="index" item="item" open="(" separator=","
+    <if test="param.vehicleModels!=null">
+      and vehicle_model in
+      <foreach collection="param.vehicleModels" index="index" item="item" open="(" separator=","
         close=")">
         #{item}
       </foreach>

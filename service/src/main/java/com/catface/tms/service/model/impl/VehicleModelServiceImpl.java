@@ -40,7 +40,7 @@ public class VehicleModelServiceImpl implements VehicleModelService {
    */
   @Override
   public Page<VehicleModel> queryOnePage(QueryVehicleModelParam param) {
-    return null;
+    return vehicleModelRpService.queryOnePage(param);
   }
 
   /**

@@ -20,7 +20,7 @@ public class QueryVehicleParam extends Page<Vehicle> {
   private String plateNumber;
 
   @ApiModelProperty(value = "车辆类型")
-  private Set<Long> vehicleTypes;
+  private Set<Long> vehicleModels;
 
 
 }

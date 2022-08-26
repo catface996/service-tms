@@ -71,7 +71,7 @@ public class VehicleWebConvert {
 
   public static QueryVehicleParam convert(GetVehicleRequest request) {
     QueryVehicleParam param = new QueryVehicleParam();
-    param.setVehicleTypes(request.getVehicleTypes());
+    param.setVehicleModels(request.getVehicleModels());
     param.setPlateNumber(request.getPlateNumber());
     param.setClientId(request.getCtxClientId());
     param.setCurrent(request.getCurrent());

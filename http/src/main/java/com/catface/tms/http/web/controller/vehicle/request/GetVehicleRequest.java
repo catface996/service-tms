@@ -27,5 +27,5 @@ public class GetVehicleRequest extends PageRequest {
   private String plateNumber;
 
   @ApiModelProperty(value = "车辆类型",example = "[12121212]")
-  private Set<Long> vehicleTypes;
+  private Set<Long> vehicleModels;
 }
