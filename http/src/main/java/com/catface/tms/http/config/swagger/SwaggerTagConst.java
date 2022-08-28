@@ -18,5 +18,7 @@ public class SwaggerTagConst {
 
     public static final String CONSIGNOR = "发货人";
 
+    public static final String CONSIGNEE = "收货人";
+
 
 }
