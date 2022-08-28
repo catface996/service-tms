@@ -56,4 +56,26 @@ public class ConsigneeServiceImpl implements ConsigneeService {
   public Page<Consignee> queryOnePage(QueryConsigneeParam param) {
     return consigneeRpService.queryOnePage(param);
   }
+
+  /**
+   * 删除收货人
+   *
+   * @param consigneeId 待删除的收货人ID
+   * @param clientId    执行删除的客户ID
+   */
+  @Override
+  public void delete(Long consigneeId, Long clientId) {
+    // 检查待删除的收货人是否存在,如果存在,需要检查是否属于同一个客户
+    Consignee entityExist = consigneeRpService.getById(consigneeId);
+    if (entityExist == null) {
+      log.warn("待删除的收货人不存在,收货人ID:{}",consigneeId);
+      return;
+    }
+
+    // 判断是否是同一个客户
+    Assert.state(entityExist.getClientId().equals(clientId),"禁止删除其他客户的收货人");
+
+    // 执行删除动作
+    consigneeRpService.removeById(consigneeId);
+  }
 }

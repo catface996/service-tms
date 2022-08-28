@@ -22,4 +22,11 @@ public interface ConsigneeService {
    * @return 收货人列表
    */
   Page<Consignee> queryOnePage(QueryConsigneeParam param);
+
+  /**
+   * 删除收货人
+   * @param consigneeId 待删除的收货人ID
+   * @param clientId 执行删除的客户ID
+   */
+  void delete(Long consigneeId,Long clientId);
 }

@@ -56,7 +56,7 @@ public class ConsigneeController {
   @ApiOperation(value = "删除收货人")
   @PostMapping(value = "/public/consignee/delete")
   public JsonResult<Boolean> delete(@RequestBody @Valid DeleteConsigneeRequest request) {
-
+    consigneeService.delete(request.getConsigneeId(),request.getCtxClientId());
     return JsonResult.success(true);
   }
 
