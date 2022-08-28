@@ -1,13 +1,16 @@
 package com.catface.tms.http.web.controller.consignor;
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.catface.common.model.JsonResult;
 import com.catface.common.model.PageVO;
 import com.catface.tms.http.config.swagger.SwaggerTagConst;
 import com.catface.tms.http.web.controller.consignor.convert.ConsignorWebConvert;
 import com.catface.tms.http.web.controller.consignor.request.DeleteConsignorRequest;
+import com.catface.tms.http.web.controller.consignor.request.GetConsignorRequest;
 import com.catface.tms.http.web.controller.consignor.request.SaveConsignorRequest;
 import com.catface.tms.http.web.controller.consignor.response.ConsignorResponse;
 import com.catface.tms.repository.entity.Consignor;
+import com.catface.tms.repository.param.QueryConsignorParam;
 import com.catface.tms.service.consignor.ConsignorService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -42,8 +45,12 @@ public class ConsignorController {
 
   @ApiOperation(value = "分页查询发货人")
   @PostMapping(value = "/public/consignor/getOnePage")
-  public JsonResult<PageVO<ConsignorResponse>> getOnePage() {
-    return JsonResult.success();
+  public JsonResult<PageVO<ConsignorResponse>> getOnePage(
+      @RequestBody @Valid GetConsignorRequest request) {
+    QueryConsignorParam param = ConsignorWebConvert.convert(request);
+    Page<Consignor> page = consignorService.queryOnePage(param);
+    PageVO<ConsignorResponse> pageVO = ConsignorWebConvert.convert(page);
+    return JsonResult.success(pageVO);
   }
 
   @ApiOperation(value = "删除发货人")

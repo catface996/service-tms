@@ -1,8 +1,15 @@
 package com.catface.tms.http.web.controller.consignor.convert;
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.catface.common.model.PageVO;
+import com.catface.tms.http.web.controller.consignor.request.GetConsignorRequest;
 import com.catface.tms.http.web.controller.consignor.request.SaveConsignorRequest;
+import com.catface.tms.http.web.controller.consignor.response.ConsignorResponse;
 import com.catface.tms.repository.entity.Consignor;
+import com.catface.tms.repository.param.QueryConsignorParam;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import org.joda.time.DateTime;
 import org.springframework.cglib.beans.BeanCopier;
 
@@ -13,8 +20,10 @@ import org.springframework.cglib.beans.BeanCopier;
 public class ConsignorWebConvert {
 
   private static final BeanCopier SAVE_REQUEST_2_ENTITY = BeanCopier.create(
-      SaveConsignorRequest.class,
-      Consignor.class, false);
+      SaveConsignorRequest.class, Consignor.class, false);
+
+  private static final BeanCopier ENTITY_2_RESPONSE = BeanCopier.create(Consignor.class,
+      ConsignorResponse.class, false);
 
   public static Consignor convert(SaveConsignorRequest request) {
     Consignor entity = new Consignor();
@@ -37,6 +46,38 @@ public class ConsignorWebConvert {
 
     entity.setClientId(request.getCtxClientId());
     return entity;
+  }
+
+  public static QueryConsignorParam convert(GetConsignorRequest request) {
+    QueryConsignorParam param = new QueryConsignorParam();
+    param.setConsignorMobile(request.getConsignorMobile());
+    param.setConsignorName(request.getConsignorName());
+    param.setCurrent(request.getCurrent());
+    param.setSize(request.getSize());
+    param.setClientId(request.getCtxClientId());
+    return param;
+  }
+
+  public static ConsignorResponse convert(Consignor entity) {
+    ConsignorResponse response = new ConsignorResponse();
+    ENTITY_2_RESPONSE.copy(entity, response, null);
+    return response;
+  }
+
+  public static List<ConsignorResponse> convert(List<Consignor> entities) {
+    List<ConsignorResponse> responses = new ArrayList<>();
+    for (Consignor entity : entities) {
+      responses.add(convert(entity));
+    }
+    return responses;
+  }
+
+  public static PageVO<ConsignorResponse> convert(Page<Consignor> page) {
+    PageVO<ConsignorResponse> pageVO = new PageVO<>(page.getCurrent(), page.getSize(),
+        page.getPages(), page.getTotal());
+    List<ConsignorResponse> list = convert(page.getRecords());
+    pageVO.setRecords(list);
+    return pageVO;
   }
 
 }

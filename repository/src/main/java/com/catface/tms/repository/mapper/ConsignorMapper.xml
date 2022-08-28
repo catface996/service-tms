@@ -7,4 +7,19 @@
         id, client_id, consignor_name, consignor_mobile, province_code, province_name, city_code, city_name, district_code, district_name, street_code, street_name, detailed_address, creator, modifier, created, updated, remark
     </sql>
 
+    <!-- 分页查询发货人 -->
+    <select id="selectOnePage" resultType="com.catface.tms.repository.entity.Consignor">
+        select
+        <include refid="Base_Column_List"/>
+        from consignor
+        where
+        client_id = #{param.clientId}
+        <if test="param.consignorName!=null and param.consignorName!=''">
+            and consignor_name like concat('%',#{param.consignorName},'%')
+        </if>
+        <if test="param.consignorMobile!=null and param.consignorMobile!=''">
+            and consignor_mobile like concat('%',#{param.consignorMobile},'%')
+        </if>
+    </select>
+
 </mapper>

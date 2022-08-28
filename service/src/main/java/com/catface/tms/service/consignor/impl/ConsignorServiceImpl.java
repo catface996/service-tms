@@ -1,6 +1,8 @@
 package com.catface.tms.service.consignor.impl;
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.catface.tms.repository.entity.Consignor;
+import com.catface.tms.repository.param.QueryConsignorParam;
 import com.catface.tms.repository.service.ConsignorRpService;
 import com.catface.tms.service.consignor.ConsignorService;
 import lombok.extern.slf4j.Slf4j;
@@ -42,6 +44,17 @@ public class ConsignorServiceImpl implements ConsignorService {
     }
     // 执行新增或者更新
     consignorRpService.saveOrUpdate(entity);
+  }
+
+  /**
+   * 分页查询发货人
+   *
+   * @param param 发货人姓名,发货人电话,分页信息
+   * @return 发货人列表
+   */
+  @Override
+  public Page<Consignor> queryOnePage(QueryConsignorParam param) {
+    return consignorRpService.queryOnePage(param);
   }
 
 }
