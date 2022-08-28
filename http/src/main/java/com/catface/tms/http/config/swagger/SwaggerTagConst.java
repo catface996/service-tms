@@ -16,5 +16,7 @@ public class SwaggerTagConst {
 
     public static final String VEHICLE_MODEL = "车辆型号";
 
+    public static final String CONSIGNOR = "发货人";
+
 
 }
