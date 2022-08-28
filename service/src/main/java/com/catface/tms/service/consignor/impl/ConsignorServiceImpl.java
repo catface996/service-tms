@@ -57,4 +57,26 @@ public class ConsignorServiceImpl implements ConsignorService {
     return consignorRpService.queryOnePage(param);
   }
 
+  /**
+   * 删除发货人
+   *
+   * @param consignorId 待删除的发货人ID
+   * @param clientId    执行该操作的客户ID
+   */
+  @Override
+  public void delete(Long consignorId, Long clientId) {
+
+    // 检查待删除的发货人是否存在,如果存在,进一步检查是否是当前客户的发货人
+    Consignor entity = consignorRpService.getById(consignorId);
+    if (entity == null) {
+      log.warn("待删除的发货人不存在,发货人ID:{}", consignorId);
+      return;
+    }
+
+    Assert.state(entity.getClientId().equals(clientId), "禁止删除其他客户的发货人");
+
+    // 执行删除动作
+    consignorRpService.removeById(consignorId);
+  }
+
 }

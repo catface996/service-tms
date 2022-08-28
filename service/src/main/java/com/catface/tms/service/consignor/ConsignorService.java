@@ -24,4 +24,12 @@ public interface ConsignorService {
    * @return 发货人列表
    */
   Page<Consignor> queryOnePage(QueryConsignorParam param);
+
+  /**
+   * 删除发货人
+   *
+   * @param consignorId 待删除的发货人ID
+   * @param clientId    执行该操作的客户ID
+   */
+  void delete(Long consignorId, Long clientId);
 }

@@ -56,6 +56,7 @@ public class ConsignorController {
   @ApiOperation(value = "删除发货人")
   @PostMapping(value = "/public/consignor/delete")
   public JsonResult<Boolean> delete(@RequestBody @Valid DeleteConsignorRequest request) {
+    consignorService.delete(request.getConsignorId(), request.getCtxClientId());
     return JsonResult.success(true);
   }
 
