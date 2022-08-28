@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.catface.tms.repository.mapper.ConsignorMapper">
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, client_id, consignor_name, consignor_mobile, province_code, province_name, city_code, city_name, county_code, county_name, street_code, street_name, detailed_address, creator, modifier, created, updated, remark
+    </sql>
+
+</mapper>
