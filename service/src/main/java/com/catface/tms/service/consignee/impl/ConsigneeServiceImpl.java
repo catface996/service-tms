@@ -1,7 +1,10 @@
-package com.catface.tms.service.consignee;
+package com.catface.tms.service.consignee.impl;
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.catface.tms.repository.entity.Consignee;
+import com.catface.tms.repository.param.QueryConsigneeParam;
 import com.catface.tms.repository.service.ConsigneeRpService;
+import com.catface.tms.service.consignee.ConsigneeService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
@@ -41,5 +44,16 @@ public class ConsigneeServiceImpl implements ConsigneeService {
 
     // 执行新增或者更新操作
     consigneeRpService.saveOrUpdate(entity);
+  }
+
+  /**
+   * 分页查询收货人
+   *
+   * @param param 收货人姓名,收货人手机号,分页信息
+   * @return 收货人列表
+   */
+  @Override
+  public Page<Consignee> queryOnePage(QueryConsigneeParam param) {
+    return consigneeRpService.queryOnePage(param);
   }
 }

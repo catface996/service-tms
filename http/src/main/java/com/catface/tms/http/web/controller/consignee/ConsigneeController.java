@@ -1,5 +1,6 @@
 package com.catface.tms.http.web.controller.consignee;
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.catface.common.model.JsonResult;
 import com.catface.common.model.PageVO;
 import com.catface.tms.http.config.swagger.SwaggerTagConst;
@@ -9,6 +10,7 @@ import com.catface.tms.http.web.controller.consignee.request.GetConsigneeRequest
 import com.catface.tms.http.web.controller.consignee.request.SaveConsigneeRequest;
 import com.catface.tms.http.web.controller.consignee.response.ConsigneeResponse;
 import com.catface.tms.repository.entity.Consignee;
+import com.catface.tms.repository.param.QueryConsigneeParam;
 import com.catface.tms.service.consignee.ConsigneeService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -45,12 +47,16 @@ public class ConsigneeController {
   @PostMapping(value = "/public/consignee/getOnePage")
   public JsonResult<PageVO<ConsigneeResponse>> getOnePage(
       @RequestBody @Valid GetConsigneeRequest request) {
-    return JsonResult.success();
+    QueryConsigneeParam param = ConsigneeWebConvert.convert(request);
+    Page<Consignee> page = consigneeService.queryOnePage(param);
+    PageVO<ConsigneeResponse> pageVO = ConsigneeWebConvert.convert(page);
+    return JsonResult.success(pageVO);
   }
 
   @ApiOperation(value = "删除收货人")
   @PostMapping(value = "/public/consignee/delete")
   public JsonResult<Boolean> delete(@RequestBody @Valid DeleteConsigneeRequest request) {
+
     return JsonResult.success(true);
   }
 

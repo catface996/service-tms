@@ -9,6 +9,20 @@
     , client_id, consignee_name, consignee_mobile, province_code, province_name, city_code, city_name, district_code, district_name, street_code, street_name, detailed_address, creator, modifier, created, updated, remark
   </sql>
 
+  <!-- 分页查询收货人 -->
+  <select id="selectOnePage" resultType="com.catface.tms.repository.entity.Consignee">
+    select
+    <include refid="Base_Column_List"/>
+    from consignee
+    where
+    client_id = #{param.clientId}
+    <if test="param.consigneeName!=null and param.consigneeName!=''">
+      and consignee_name like concat('%',#{param.consigneeName},'%')
+    </if>
+    <if test="param.consigneeMobile!=null and param.consigneeMobile!=''">
+      and consignee_mobile like concat('%',#{param.consigneeMobile},'%')
+    </if>
+  </select>
 
 
 </mapper>

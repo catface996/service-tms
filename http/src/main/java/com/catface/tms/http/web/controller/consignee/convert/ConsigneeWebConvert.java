@@ -1,8 +1,15 @@
 package com.catface.tms.http.web.controller.consignee.convert;
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.catface.common.model.PageVO;
+import com.catface.tms.http.web.controller.consignee.request.GetConsigneeRequest;
 import com.catface.tms.http.web.controller.consignee.request.SaveConsigneeRequest;
+import com.catface.tms.http.web.controller.consignee.response.ConsigneeResponse;
 import com.catface.tms.repository.entity.Consignee;
+import com.catface.tms.repository.param.QueryConsigneeParam;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import org.joda.time.DateTime;
 import org.springframework.cglib.beans.BeanCopier;
 
@@ -12,8 +19,11 @@ import org.springframework.cglib.beans.BeanCopier;
  */
 public class ConsigneeWebConvert {
 
-  private static final BeanCopier SAVE_REQUEST_2_ENTITY = BeanCopier.create(SaveConsigneeRequest.class,
-      Consignee.class, false);
+  private static final BeanCopier SAVE_REQUEST_2_ENTITY = BeanCopier.create(
+      SaveConsigneeRequest.class, Consignee.class, false);
+
+  private static final BeanCopier ENTITY_2_RESPONSE = BeanCopier.create(Consignee.class,
+      ConsigneeResponse.class, false);
 
   public static Consignee convert(SaveConsigneeRequest request) {
     Consignee entity = new Consignee();
@@ -37,4 +47,37 @@ public class ConsigneeWebConvert {
     entity.setClientId(request.getCtxClientId());
     return entity;
   }
+
+  public static QueryConsigneeParam convert(GetConsigneeRequest request) {
+    QueryConsigneeParam param = new QueryConsigneeParam();
+    param.setClientId(request.getCtxClientId());
+    param.setConsigneeMobile(request.getConsigneeMobile());
+    param.setConsigneeName(request.getConsigneeName());
+    param.setCurrent(request.getCurrent());
+    param.setSize(request.getSize());
+    return param;
+  }
+
+  public static ConsigneeResponse convert(Consignee entity) {
+    ConsigneeResponse response = new ConsigneeResponse();
+    ENTITY_2_RESPONSE.copy(entity, response, null);
+    return response;
+  }
+
+  public static List<ConsigneeResponse> convert(List<Consignee> entities) {
+    List<ConsigneeResponse> list = new ArrayList<>();
+    for (Consignee entity : entities) {
+      list.add(convert(entity));
+    }
+    return list;
+  }
+
+  public static PageVO<ConsigneeResponse> convert(Page<Consignee> page) {
+    PageVO<ConsigneeResponse> pageVO = new PageVO<>(page.getCurrent(), page.getSize(),
+        page.getPages(), page.getTotal());
+    List<ConsigneeResponse> list = convert(page.getRecords());
+    pageVO.setRecords(list);
+    return pageVO;
+  }
+
 }
