@@ -4,7 +4,7 @@
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        id, client_id, consignor_name, consignor_mobile, province_code, province_name, city_code, city_name, county_code, county_name, street_code, street_name, detailed_address, creator, modifier, created, updated, remark
+        id, client_id, consignor_name, consignor_mobile, province_code, province_name, city_code, city_name, district_code, district_name, street_code, street_name, detailed_address, creator, modifier, created, updated, remark
     </sql>
 
 </mapper>

@@ -51,10 +51,10 @@ public class Consignor implements Serializable {
     private String cityName;
 
     @ApiModelProperty(value = "发货人所在县区编码")
-    private String countyCode;
+    private String districtCode;
 
     @ApiModelProperty(value = "发货人所在县区名称")
-    private String countyName;
+    private String districtName;
 
     @ApiModelProperty(value = "发货人所在街道编码")
     private String streetCode;

@@ -51,10 +51,10 @@ public class Consignee implements Serializable {
     private String cityName;
 
     @ApiModelProperty(value = "收货人所在县区编码")
-    private String countyCode;
+    private String districtCode;
 
     @ApiModelProperty(value = "收货人所在县区名称")
-    private String countyName;
+    private String districtName;
 
     @ApiModelProperty(value = "收货人所在街道编码")
     private String streetCode;
