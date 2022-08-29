@@ -21,4 +21,7 @@ public class SwaggerTagConst {
     public static final String CONSIGNEE = "收货人";
 
 
+    public static final String DELIVER_ORDER = "发货单";
+
+
 }

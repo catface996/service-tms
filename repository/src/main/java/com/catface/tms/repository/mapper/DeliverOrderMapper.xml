@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.catface.tms.repository.mapper.DeliverOrderMapper">
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, client_id, consignor_id, consignor, consignee_id, consignee, accept_goods_type, deliver_goods_type, collecting_on_deliver, collecting_amount, deliver_status, created, updated, remark
+    </sql>
+
+</mapper>
