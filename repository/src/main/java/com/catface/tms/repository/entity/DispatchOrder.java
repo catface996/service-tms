@@ -1,5 +1,9 @@
 package com.catface.tms.repository.entity;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.catface.tms.common.enums.DeliverStatusEnum;
+import com.catface.tms.common.enums.FreightPayModelEnum;
 import java.math.BigDecimal;
 import java.util.Date;
 import com.baomidou.mybatisplus.annotation.Version;
@@ -25,6 +29,7 @@ public class DispatchOrder implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @ApiModelProperty(value = "id，主键")
+    @TableId(value = "id",type = IdType.ASSIGN_ID)
     private Long id;
 
     @ApiModelProperty(value = "货运单ID")
@@ -40,10 +45,10 @@ public class DispatchOrder implements Serializable {
     private BigDecimal freightChargeAmount;
 
     @ApiModelProperty(value = "运费付费方式")
-    private String freightPayModel;
+    private FreightPayModelEnum freightPayModel;
 
     @ApiModelProperty(value = "送货状态")
-    private String deliverStatus;
+    private DeliverStatusEnum deliverStatus;
 
     @ApiModelProperty(value = "创建人")
     private Long creator;
@@ -51,6 +56,7 @@ public class DispatchOrder implements Serializable {
     @ApiModelProperty(value = "修噶人")
     private Long modifier;
 
+    @ApiModelProperty(value = "创建时间")
     private Date created;
 
     @ApiModelProperty(value = "修改时间")
